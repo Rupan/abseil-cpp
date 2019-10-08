@@ -104,7 +104,7 @@ function(absl_cc_library)
     endif()
 
     if(NOT ABSL_CC_LIB_IS_INTERFACE)
-      add_library(${_NAME} STATIC "")
+      add_library(${_NAME} SHARED "")
       target_sources(${_NAME} PRIVATE ${ABSL_CC_LIB_SRCS} ${ABSL_CC_LIB_HDRS})
       target_include_directories(${_NAME}
         PUBLIC
@@ -139,6 +139,8 @@ function(absl_cc_library)
       # installed.
       set_target_properties(${_NAME} PROPERTIES
         OUTPUT_NAME "absl_${_NAME}"
+        VERSION 20190808
+        SOVERSION 0
       )
     else()
       # Generating header-only library
